@@ -87,7 +87,7 @@ class Discount: DiscountStrategy {
 class Product {
   let name: String
   let price: Double
-  let quantity: Int
+  var quantity: Int
   
   init(name: String, price: Double, quantity: Int) {
     self.name = name
@@ -134,6 +134,15 @@ public class ShoppingCartSingleton {
   }
   
   func removeProduct(product: Product) {
+    if let index = products.firstIndex(of: product) {
+      products[index].quantity -= 1
+      if products[index].quantity == 0 {
+        products.remove(product)
+      }
+    }    
+  }
+  
+  func removeEvery(product: Product) {
     products.remove(product)
   }
   
@@ -141,11 +150,20 @@ public class ShoppingCartSingleton {
     products.removeAll()
   }
   
-  func getTotalPrice() {
-    products.map { $0.price }.reduce(0, { x, y in
+  func getTotalPrice() -> Double {
+    return products.map { PriceRounder.roundPrice(price: $0.price * Double($0.quantity)) }.reduce(0, { x, y in
       x + y
     })
   }
 }
 
+let apple = Product(name: "Apple", price: 2.39, quantity: 1)
+let orange = Product(name: "Orange", price: 1.87, quantity: 1)
+
+ShoppingCartSingleton.singleton().addProduct(product: apple, quantity: 5, discountOption: .percentageDiscountStrategy(percentage: 0.8))
+ShoppingCartSingleton.singleton().addProduct(product: orange, quantity: 7, discountOption: .noDiscountStrategy)
+
+ShoppingCartSingleton.singleton().getTotalPrice()
+
 // Exercise 3
+
