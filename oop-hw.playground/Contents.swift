@@ -42,3 +42,33 @@ let post2 = Post(author: "Luke Cat Amata", content: "Anybody else have an owner 
 post1.display()
 print("---------")
 post2.display()
+
+// Exercise 2
+
+class Product {
+  let name: String
+  let price: Double
+  let quantity: Int
+  
+  init(name: String, price: Double, quantity: Int) {
+    self.name = name
+    self.price = price
+    self.quantity = quantity
+  }
+}
+
+public class ShoppingCartSingleton {
+  private var products: [Product] = []
+  private static var sharedInstance: ShoppingCartSingleton?
+  
+  private init() {
+    self.products = []
+  }
+  
+  public class func singleton() -> ShoppingCartSingleton {
+    if sharedInstance == nil {
+      sharedInstance = ShoppingCartSingleton()
+    }
+    return sharedInstance!
+  }
+}
