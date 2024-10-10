@@ -166,7 +166,7 @@ class CreditCardValidator {
 
 class PaymentAmountFormatter {
   static func formatAmount(amount: Double) -> String {
-    String(format: "%.2f", amount)
+    String(format: "$%.2f", amount)
   }
 }
 
@@ -201,7 +201,7 @@ class CreditCardProcessor: PaymentProcessor {
         }
       }
     } else {
-      print("Credit card payment in the amount of $\(PaymentAmountFormatter.formatAmount(amount: amount)) succeeded!")
+      print("Credit card payment in the amount of \(PaymentAmountFormatter.formatAmount(amount: amount)) succeeded!")
     }
   }
 }
@@ -219,7 +219,7 @@ class CashProcessor: PaymentProcessor {
     } else if billsAreCounterfeit {
       throw PaymentError.billsAreCounterfeit
     } else {
-      print("Cash payment in the amount of $\(PaymentAmountFormatter.formatAmount(amount: amount)) succeeded!")
+      print("Cash payment in the amount of \(PaymentAmountFormatter.formatAmount(amount: amount)) succeeded!")
     }
   }
 }
