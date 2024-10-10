@@ -1,3 +1,5 @@
+HW Complete!
+
 #### Exercise 1
 
 Demonstrates encapsulation by separating the `StringManager` class that formats post from the `Post` itself.
