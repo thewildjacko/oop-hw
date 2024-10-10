@@ -21,3 +21,14 @@ Singleton class `ShoppingCartSingleton` also has the following methods:
 Demo cases for adding products with different names, quantities and discountOptions are included in the exercise, as is a demo of `getTotalPrice`
 
 #### Exercise 3
+
+`enum PaymentError: Error` creates a custom error type with cases for the following: 
+  - insufficientFunds
+  - billsAreCounterfeit
+  - invalidNameOnCard
+  - invalidEmailAddress
+  - invalidCreditCardNumber
+  - invalidExpirationDate
+  - invalidCVC
+  - invalidZipCode
+  - case unknownError
