@@ -104,8 +104,6 @@ public class ShoppingCartSingleton {
     products.remove(product)
   }
   
-  
-  
   func clearCart() {
     products.removeAll()
   }

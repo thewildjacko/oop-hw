@@ -12,7 +12,6 @@ enum PaymentError: Error {
   case invalidExpirationDate
   case invalidCVC
   case invalidZipCode
-  case unableToConnectToBank
   case unknownError
 }
 
